@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}{{ post.title }}{% endblock %}
+{% block content %}
+  <article class="post-full">
+    <h1>{{ post.title }}</h1>
+    <p class="meta">by {{ post.author }}</p>
+    <p class="body-text">{{ post.body }}</p>
+
+    <form action="{{ url_for('delete_post', post_id=post.post_id) }}" method="POST"
+          onsubmit="return confirm('Delete this post?');">
+      <button type="submit" class="delete-btn">Delete Post</button>
+    </form>
+  </article>
+
+  <section class="comments">
+    <h2>Comments ({{ comments|length }})</h2>
+
+    {% for comment in comments %}
+      <div class="comment">
+        <p class="meta"><strong>{{ comment.author }}</strong> — </p>
+        <p>{{ comment.body }}</p>
+      </div>
+    {% else %}
+      <p>No comments yet. Be the first!</p>
+    {% endfor %}
+
+    <h3>Add a Comment</h3>
+    <form method="POST" class="comment-form">
+      <input type="text" name="author" placeholder="Your name" required>
+      <textarea name="body" placeholder="Your comment" required></textarea>
+      <button type="submit">Post Comment</button>
+    </form>
+  </section>
+
+  <p><a href="{{ url_for('index') }}">&larr; Back to all posts</a></p>
+{% endblock %}

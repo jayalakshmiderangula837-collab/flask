@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+  {% block addcss %}<link rel="stylesheet" href="/static/style.css"/>{% endblock %}
+  {% block title %}<title>Flask Blog - Home</title>{% endblock %}
+{% block content %}
+  <div class="post-list">
+      {% for i in posts %}
+        <article class="post-card">
+          <h2><a href=#">{{i.title}}</a></h2>
+          <p class="meta">by {{i.author}} </p>
+          <p>{{i.conent}}</p>
+          <p class="meta">{{i.comment_count}}</p>
+        </article>
+        {% endfor %}
+    </div>
+    <p>No posts yet. <a href="#">Write the first one</a>.</p>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+  {% block addcss %}<link rel="stylesheet" href="/static/style.css">{% endblock %}
+  {% block title %}<title>new post</title>{% endblock %}
+{% block content %}
+<body>
+  <h1>New Post</h1>
+  <form method="POST" class="post-form">
+    <label for="title">Title</label>
+    <input type="text" id="title" name="title" required>
+
+    <label for="author">Your Name</label>
+    <input type="text" id="author" name="author" required>
+
+    <label for="body">Content</label>
+    <textarea id="body" name="body" rows="10" required></textarea>
+
+    <button type="submit">Publish</button>
+  </form>
+  
+</body>
+{% endblock %}
